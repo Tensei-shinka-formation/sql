@@ -1,6 +1,6 @@
 services:
   db:
-    image: mysql:8
+    image: mysql
     container_name: mysql
     restart: always
     environment:
@@ -13,6 +13,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backup:/backup/
       - ./sakila-db/sakila-schema.sql:/docker-entrypoint-initdb.d/01-sakila-schema.sql
       - ./sakila-db/sakila-data.sql:/docker-entrypoint-initdb.d/02-sakila-data.sql
 
